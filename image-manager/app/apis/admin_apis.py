@@ -111,7 +111,7 @@ def add_image():
         if ext:
             fn = '{}.{}'.format(fn, ext)
         f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], fn))
-        image_src = 'static/images/{}'.format(fn)
+        image_src = '/static/images/{}'.format(fn)
         image = Image(
             filename=f.filename,
             image_src=image_src,
@@ -261,7 +261,7 @@ def upload_image():
     ext = f.filename.split('.')[-1]
     fn = '{}.{}'.format(uuid.uuid1(), ext)
     f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], fn))
-    image_src = 'static/images/{}'.format(fn)
+    image_src = '/static/images/{}'.format(fn)
     image = Image(
         filename=f.filename,
         image_src=image_src

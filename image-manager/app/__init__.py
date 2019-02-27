@@ -20,6 +20,11 @@ def init_logger(app):
     app.logger = Logger(log_name, log_level, log_file).get_logger()
 
 
+def init_static_dir(app):
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
+
+
 def create_app(config_name):
     app = Flask(__name__)
     CORS(app, supports_credentials=True)
@@ -28,6 +33,7 @@ def create_app(config_name):
     db.init_app(app)
 
     init_logger(app)
+    init_static_dir(app)
 
     from app.apis import admin_bp
     app.register_blueprint(admin_bp, url_prefix='/admin')

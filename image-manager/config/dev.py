@@ -7,6 +7,8 @@ class DevelopmentConfig(CommonConfig):
 
     DEBUG = True
 
+    API_HOST = 'http://192.168.1.211:5001'
+
     SQLALCHEMY_DATABASE_URI = 'mysql://{user}:{password}@{host}:{port}/{db}'.format(
         user='root',
         password='huiying',

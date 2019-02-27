@@ -1,6 +1,7 @@
 # coding:utf8
 
 from datetime import datetime
+from flask import current_app
 from app import db
 from app.models.base import BaseModel
 
@@ -29,7 +30,7 @@ class Image(BaseModel):
         return {
             'id': self.id,
             'filename': self.filename,
-            'image_src': 'http://192.168.1.211:5001/'+self.image_src,
+            'image_src': current_app.config['API_HOST'] + self.image_src,
             'category_id': self.category_id,
             'create_time': self.create_time.strftime('%Y-%m-%d %H:%M:%S'),
             'update_time': self.update_time.strftime('%Y-%m-%d %H:%M:%S')
